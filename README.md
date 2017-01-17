@@ -1,6 +1,14 @@
 [![Code Climate](https://codeclimate.com/github/18F/pulse/badges/gpa.svg)](https://codeclimate.com/github/18F/pulse) [![Build Status](https://travis-ci.org/18F/pulse.png)](https://travis-ci.org/18F/pulse) [![Dependency Status](https://gemnasium.com/badges/github.com/18F/pulse.svg)](https://gemnasium.com/github.com/18F/pulse)
 
 
+
+
+# Note - this branch is for convenient storage of some draft datasets and is not for development.  -Gray
+
+
+
+
+
 ## The pulse of the federal .gov webspace
 
 How the .gov domain space is doing at best practices and federal requirements.
