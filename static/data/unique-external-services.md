@@ -54,10 +54,13 @@
 * cdn-static-1.medium.com  
 * cdn.datatables.net  
 * cdn.dcodes.net  
+* cdn.heapanalytics.com  
 * cdn.jsdelivr.net  
 * cdn.lift.acquia.com  
 * cdn.loc.gov  
+* cdn.luckyorange.com  
 * cdn.mathjax.org  
+* cdn.mouseflow.com  
 * cdn.mxpnl.com  
 * cdn.optimizely.com  
 * cdn.polyfill.io  
@@ -93,10 +96,12 @@
 * cse.google.com  
 * csi.gstatic.com  
 * d.agkn.com  
+* d10lpsik1i8c69.cloudfront.net  
 * d13qcyivyon4xf.cloudfront.net  
 * d14rmgtrwzf5a.cloudfront.net  
 * d15vqlr7iz6e8x.cloudfront.net  
 * d1aug3dv5magti.cloudfront.net  
+* d1w86dhf197kq6.cloudfront.net  
 * d2gfdmu30u15x7.cloudfront.net  
 * d39pc38av48c2g.cloudfront.net  
 * d39se0h2uvfakd.cloudfront.net  
@@ -139,6 +144,7 @@
 * f.vimeocdn.com  
 * f1-eu.readspeaker.com  
 * f1-na.readspeaker.com  
+* f1.na.readspeaker.com  
 * faa.d2.sc.omtrdc.net  
 * farm1.static.flickr.com  
 * farm1.staticflickr.com  
@@ -175,6 +181,7 @@
 * gsaauctions.gov  
 * gtrk.s3.amazonaws.com  
 * health.foresee.com  
+* heapanalytics.com  
 * hello.myfonts.net  
 * hhsfoodsafety.mpeasylink.com  
 * hhsmentalhealth.mpeasylink.com  
@@ -262,6 +269,7 @@
 * platform.twitter.com  
 * player.vimeo.com  
 * players.brightcove.net  
+* plus.browsealoud.com  
 * portal.hud.gov  
 * powertrain.com  
 * prd-wret.s3-us-west-2.amazonaws.com  
@@ -299,9 +307,7 @@
 * sdc.usembassy.gov  
 * seal.verisign.com  
 * seal.websecurity.norton.com  
-* search.pbgc.gov  
 * search.usa.gov  
-* search.uspto.gov  
 * searchstats.usa.gov  
 * secure.addthis.com  
 * secure.adnxs.com  
@@ -314,7 +320,6 @@
 * server.arcgisonline.com  
 * serverapi.arcgisonline.com  
 * services.arcgisonline.com  
-* share.sandia.gov  
 * siteimproveanalytics.com  
 * siteintercept.qualtrics.com  
 * smon.loc.gov  
@@ -326,12 +331,13 @@
 * ss.sharethis.com  
 * ssl.google-analytics.com  
 * ssl.gstatic.com  
+* ssl.luckyorange.com  
 * ssl.p.jwpcdn.com  
 * stags.bluekai.com  
-* standards.usa.gov  
 * static.arcgis.com  
 * static.cancer.gov  
 * static.chartbeat.com  
+* static.ctctcdn.com  
 * static.doubleclick.net  
 * static.dvidshub.net  
 * static.getclicky.com  
@@ -421,6 +427,7 @@
 * www.banknet.gov  
 * www.bizographics.com  
 * www.bja.gov  
+* www.browsealoud.com  
 * www.bugherd.com  
 * www.cdc.gov  
 * www.chase.com  
@@ -456,6 +463,7 @@
 * www.justice.gov  
 * www.linkedin.com  
 * www.loc.gov  
+* www.meltwaternews.com  
 * www.nal.usda.gov  
 * www.ncbi.nlm.nih.gov  
 * www.ncrc.gov  
@@ -481,6 +489,7 @@
 * www.statisticsframework.com  
 * www.surveymonkey.com  
 * www.usgs.gov  
+* www.usich.gov  
 * www.usmint.gov  
 * www.visitthecapitol.gov  
 * www.w3.org  
@@ -491,7 +500,6 @@
 * www1.eere.energy.gov  
 * www2.ed.gov  
 * www2.usgs.gov  
-* www2c.cdc.gov  
 * www3.epa.gov  
 * x.bidswitch.net  
 * yt3.ggpht.com  
@@ -499,4 +507,3 @@
 * zn5jrgx7vw6xadien-cfigroup.siteintercept.qualtrics.com  
 * zn9tslis2mj3kopgp-cfigroup.siteintercept.qualtrics.com  
 * znbqj3egyjwfzib9r-communicatehealth.siteintercept.qualtrics.com  
-* 166688199.log.optimizely.com  
