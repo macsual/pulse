@@ -36,14 +36,14 @@
          "branch":"executive",
          "customer-satisfaction":{  
             "participating":0,
-            "eligible":2
+            "eligible":1
          },
          "third-party":{  
             "services":9,
-            "page_count":2,
-            "average_services_per_page":4.5
+            "page_count":1,
+            "average_services_per_page":9
          },
-         "total_domains":2
+         "total_domains":1
       }
    ]
 }
