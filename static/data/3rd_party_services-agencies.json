@@ -31,21 +31,6 @@
          "total_domains":2
       },
       {  
-         "name":"African Development Foundation",
-         "slug":"african-development-foundation",
-         "branch":"executive",
-         "customer-satisfaction":{  
-            "participating":0,
-            "eligible":2
-         },
-         "third-party":{  
-            "services":6,
-            "page_count":2,
-            "average_services_per_page":3
-         },
-         "total_domains":2
-      },
-      {  
          "name":"US Interagency Council on Homelessness",
          "slug":"us-interagency-council-on-homelessness",
          "branch":"executive",
