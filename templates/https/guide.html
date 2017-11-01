@@ -2,7 +2,7 @@
 
 {% block page_id %}https{% endblock %}
 {% block title %}Secure HTTP (HTTPS) - Pulse{% endblock %}
-{% block description %}How federal government domains are doing at deploying HTTPS.{% endblock %}
+{% block description %}How Jamaican government domains are doing at deploying HTTPS.{% endblock %}
 
 {% block content %}
 
@@ -27,11 +27,11 @@
         <h4 id="what-domains-are-measured">What domains are measured?</h4>
 
         <p>
-          Pulse measures the presence, enforcement, and quality of HTTPS for <strong>publicly accessible <code>.gov</code> domains</strong> in the federal government's <strong>executive, legislative, and judicial branches</strong>. Domains which do nothing but redirect to other websites <strong>are measured</strong>.
+          Pulse measures the presence, enforcement, and quality of HTTPS for <strong>publicly accessible <code>.gov.jm</code> domains</strong> in the Jamaican government. Domains which do nothing but redirect to other websites <strong>are measured</strong>.
         </p>
 
         <p>
-          This currently amounts to around 1,200 domains.
+          This currently amounts to around 150 domains.
         </p>
 
       </article>
@@ -40,7 +40,7 @@
         <h4 id="subdomains">What subdomains are measured?</h4>
 
         <p>
-          Pulse currently measures <strong><code>.gov</code> subdomains that are publicly accessible over HTTP</strong> that belong to any of the measured parent domains, that are discovered from <strong>already public sources</strong>.
+          Pulse currently measures <strong><code>.gov.jm</code> subdomains that are publicly accessible over HTTP</strong> that belong to any of the measured parent domains, that are discovered from <strong>already public sources</strong>.
         </p>
 
         <ul>
@@ -50,13 +50,13 @@
             Censys publishes a large dataset of <a href="https://censys.io/certificates">observed and issued certificates</a>, updated nightly. This includes all certificates observed on the public internet from daily scans of the IPv4 space, as well as all certificates submitted to public <a href="https://https.cio.gov/certificates/#certificate-transparency">Certificate Transparency</a> logs.
           </li>
           <li>
-            <strong><a href="https://analytics.usa.gov">Digital Analytics Program</a>:</strong>
-            The Digital Analytics Program (DAP) publishes <a href="https://analytics.usa.gov/data/live/sites.csv">a dataset of federal hostnames</a>, updated nightly. This includes hostnames for which the DAP observed at least one recorded visit in the previous 14 days.
+            <strong><a href="http://jis.gov.jm/">Jamaica Information Service</a>:</strong>
+            The Jamaica Information Service (JIS) publishes <a href="http://jis.gov.jm/government/links/">a list of government hostnames</a>.
           </li>
         </ul>
 
         <p>
-          Pulse gathers <code>.gov</code> hostnames from the above sources, and then scans each hostname over the public internet to measure whether it is accessible over HTTP or HTTPS. Pulse only displays results for publicly accessible federal <code>.gov</code> subdomains.
+          Pulse gathers <code>.gov.jm</code> hostnames from the above sources, and then scans each hostname over the public internet to measure whether it is accessible over HTTP or HTTPS. Pulse only displays results for publicly accessible government <code>.gov.jm</code> subdomains.
         </p>
       </article>
 

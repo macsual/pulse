@@ -1,21 +1,15 @@
 # Site metadata.
 
 # Canonical URL
-url: https://pulse.cio.gov
+url: https://www.romariomaxwell.me/pulse
 
 name: Pulse
-title: "The pulse of the federal .gov space"
-description: "How federal government domains are meeting best practices on the web."
+title: "The pulse of the Jamaican .gov.jm space"
+description: "How Jamaican government domains are meeting best practices on the web."
 
 # Data sources. These URLs should have their content updated in-place.
 data:
-  # URL where we download the .gov domain list from.
-  domains_url: "https://raw.githubusercontent.com/GSA/data/gh-pages/dotgov-domains/current-federal.csv"
+  # URL where we download the .gov.jm domain list from.
+  domains_url: "https://raw.githubusercontent.com/macsual/dotgov-jamaica-domains/master/current.csv"
 
-  # URL where we download the participating DAP .gov list from.
-  analytics_url: "https://analytics.usa.gov/data/live/second-level-domains.csv"
-
-  # DAP URL where we source public .gov subdomains from.
-  analytics_subdomains_url: "https://analytics.usa.gov/data/live/sites-extended.csv"
-
-bucket: cg-4adefb86-dadb-4ecf-be3e-f1c7b4f6d084
+bucket: unused

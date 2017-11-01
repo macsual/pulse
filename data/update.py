@@ -51,8 +51,7 @@ BUCKET_NAME = META['bucket']
 # domain-scan information
 SCAN_TARGET = os.path.join(this_dir, "./output/scan")
 SCAN_COMMAND = os.environ.get("DOMAIN_SCAN_PATH", None)
-SCANNERS = os.environ.get("SCANNERS", "pshtt,analytics,tls,a11y,third_parties")
-ANALYTICS_URL = os.environ.get("ANALYTICS_URL", META["data"]["analytics_url"])
+SCANNERS = os.environ.get("SCANNERS", "pshtt,tls,a11y,third_parties")
 A11Y_CONFIG = os.environ.get("A11Y_CONFIG", "./a11y_config/pa11y_config.json")
 A11Y_REDIRECTS = os.environ.get("A11Y_REDIRECTS",
                                 "./a11y_config/a11y_redirects.yml")
@@ -60,12 +59,10 @@ A11Y_REDIRECTS = os.environ.get("A11Y_REDIRECTS",
 # subdomain gathering/scanning information
 GATHER_TARGET = os.path.join(this_dir, "./output/subdomains/gather")
 GATHER_COMMAND = os.environ.get("DOMAIN_GATHER_PATH", None)
-GATHER_SUFFIX = ".gov"
-GATHER_ANALYTICS_URL = META["data"]["analytics_subdomains_url"]
+GATHER_SUFFIX = ".gov.jm"
 GATHER_PARENTS = DOMAINS  # Limit subdomains to set of base domains.
 GATHERERS = [
   ["censys", "--export"],
-  ["url", "--url=%s" % GATHER_ANALYTICS_URL]
 ]
 SUBDOMAIN_SCAN_TARGET = os.path.join(this_dir, "./output/subdomains/scan")
 SUBDOMAIN_SCANNERS = "pshtt"
@@ -164,18 +161,17 @@ def upload(date):
   shell_out(["aws", "s3", "sync", live_db, archive_db, acl])
 
 
-# Use domain-scan to scan .gov domains from the set domain URL.
+# Use domain-scan to scan .gov.jm domains from the set domain URL.
 # Drop the output into data/output/scan/results.
 def scan(options):
   scanners = "--scan=%s" % SCANNERS
-  analytics = "--analytics=%s" % ANALYTICS_URL
   output = "--output=%s" % SCAN_TARGET
   a11y_redirects = "--a11y_redirects=%s" % A11Y_REDIRECTS
   a11y_config = "--a11y_config=%s" % A11Y_CONFIG
 
   full_command =[
     SCAN_COMMAND, DOMAINS,
-    scanners, analytics, output, a11y_config, a11y_redirects,
+    scanners, output, a11y_config, a11y_redirects,
     "--debug",
     "--sort"
   ]
@@ -190,11 +186,11 @@ def scan(options):
 
   shell_out(full_command)
 
-# Use domain-scan to gather .gov hostnames from public sources.
+# Use domain-scan to gather .gov.jm hostnames from public sources.
 # Then run pshtt on each gathered hostname.
 def subdomains(options):
 
-  # Use domain-scan to gather .gov domains from public sources.
+  # Use domain-scan to gather .gov.jm domains from public sources.
   def gather_subdomains(gatherer, command):
     print("[%s][gather] Gathering subdomains." % gatherer)
 

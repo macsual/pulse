@@ -104,7 +104,7 @@ From the Pulse root directory:
 python -m data.update
 ```
 
-This will kick off the `domain-scan` scanning process for HTTP/HTTPS and DAP participation, using the `.gov` domain list as specified in `meta.yml` for the base set of domains to scan.
+This will kick off the `domain-scan` scanning process for HTTP/HTTPS, using the `.gov.jm` domain list as specified in `meta.yml` for the base set of domains to scan.
 
 Then it will run the scan data through post-processing to produce some JSON and CSV files the Pulse front-end uses to render data.
 

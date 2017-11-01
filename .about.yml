@@ -3,10 +3,10 @@ project: "Pulse"
 full_name: pulse.cio.gov
 name: pulse
 github:
-- 18F/pulse
+- https://github.com/macsual/pulse
 - 18F/domain-scan
-description: A lightweight dashboard that uses the official .gov domain list to measure HTTPS integration and participation in the Digital Analytics Program.  
-impact: We designed a website that makes public and easy to understand several basic characteristics of a .gov website, such as HTTPS implementation and participation in the Digital Analytics Program.   
+description: A lightweight dashboard that uses an unofficial .gov.jm domain list to measure HTTPS integration.
+impact: We designed a website that makes public and easy to understand several basic characteristics of a .gov.jm website, such as HTTPS implementation.
 owner_type: project
 testable: true 
 partners:

@@ -114,7 +114,6 @@ a#skipnav {
 #https,
 #domain,
 #agency,
-#analytics,
 #accessibility,
 #about {
 
@@ -208,8 +207,7 @@ a#skipnav {
   }
 }
 
-.https_chart,
-.dap_chart {
+.https_chart {
   cursor: pointer;
   padding-top: 15px;
 }
@@ -230,7 +228,6 @@ a#skipnav {
 // - By Agency
 // - Guidance
 // - Accessibility
-// - DAP
 // - datatables
 // - About
 // - 404
@@ -242,7 +239,6 @@ a#skipnav {
 @import "pages/agency.scss";
 @import "pages/guidance.scss";
 @import "includes/accessibility.scss";
-@import "includes/analytics.scss";
 @import "includes/datatables.scss";
 @import "pages/about.scss";
 @import "pages/notfound.scss";

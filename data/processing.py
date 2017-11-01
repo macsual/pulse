@@ -2,11 +2,10 @@
 #
 # Given, in the data/output/scan/results directory:
 #
-# * domains.csv - federal domains, subset of .gov domain list.
+# * domains.csv - government domains, subset of .gov.jm domain list.
 #
 # * pshtt.csv - domain-scan, based on pshtt
 # * tls.csv - domain-scan, based on ssllabs-scan
-# * analytics.csv - domain-scan, based on analytics.usa.gov data
 #
 ###
 
@@ -37,7 +36,7 @@ SUBDOMAIN_SCAN_DATA = os.path.join(this_dir, "./output/subdomains/scan")
 SUBDOMAIN_AGENCY_OUTPUT = os.path.join(this_dir, "./output/subdomains/agencies/")
 # Maps domain-scan names to specific sources,
 # and whitelists which sources we know how to process.
-SUBDOMAIN_SOURCES = {'censys': 'censys', 'url': 'dap'}
+SUBDOMAIN_SOURCES = {'censys': 'censys'}
 
 A11Y_ERRORS = {
   '1_1': 'Missing Image Descriptions',
@@ -104,20 +103,8 @@ def run(date):
   # Read in domain-scan CSV data.
   scan_data = load_scan_data(domains)
 
-  # Load in some manual exclusion data.
-  analytics_ineligible = yaml.safe_load(open(os.path.join(this_dir, "ineligible/analytics.yml")))
-  analytics_ineligible_map = {}
-  for domain in analytics_ineligible:
-    analytics_ineligible_map[domain] = True
-
   # Pull out a few pshtt.csv fields as general domain metadata.
   for domain_name in scan_data.keys():
-    analytics = scan_data[domain_name].get('analytics', None)
-    if analytics:
-      ineligible = analytics_ineligible_map.get(domain_name, False)
-      domains[domain_name]['exclude']['analytics'] = ineligible
-
-
     pshtt = scan_data[domain_name].get('pshtt', None)
     if pshtt is None:
       # generally means scan was on different domains.csv, but
@@ -282,70 +269,45 @@ def load_scan_data(domains):
       scan_data[domain]['tls'] = dict_row
 
 
-  # Now, analytics measurement.
-
-  headers = []
-  with open(os.path.join(INPUT_SCAN_DATA, "analytics.csv"), newline='') as csvfile:
-    for row in csv.reader(csvfile):
-      if (row[0].lower() == "domain"):
-        headers = row
-        continue
-
-      domain = row[0].lower()
-      if not domains.get(domain):
-        # print("[analytics] Skipping %s, not a federal domain from domains.csv." % domain)
-        continue
-
-      # If it didn't appear in the pshtt data, skip it, we need this.
-      # if not domains[domain].get('pshtt'):
-      #   print("[analytics] Skipping %s, did not appear in pshtt.csv." % domain)
-      #   continue
-
-      dict_row = {}
-      for i, cell in enumerate(row):
-        dict_row[headers[i]] = cell
-
-      scan_data[domain]['analytics'] = dict_row
-
   # And a11y! Only try to load it if it exists, since scan is not yet automated.
-  if os.path.isfile(os.path.join(INPUT_SCAN_DATA, "a11y.csv")):
-    headers = []
-    with open(os.path.join(INPUT_SCAN_DATA, "a11y.csv"), newline='') as csvfile:
-      for row in csv.reader(csvfile):
-        if (row[0].lower() == "domain"):
-          headers = row
-          continue
+  # if os.path.isfile(os.path.join(INPUT_SCAN_DATA, "a11y.csv")):
+  #   headers = []
+  #   with open(os.path.join(INPUT_SCAN_DATA, "a11y.csv"), newline='') as csvfile:
+  #     for row in csv.reader(csvfile):
+  #       if (row[0].lower() == "domain"):
+  #         headers = row
+  #         continue
 
-        domain = row[0].lower()
-        if not domains.get(domain):
-          continue
+  #       domain = row[0].lower()
+  #       if not domains.get(domain):
+  #         continue
 
-        dict_row = {}
-        for i, cell in enumerate(row):
-          dict_row[headers[i]] = cell
-        if not scan_data[domain].get('a11y'):
-          scan_data[domain]['a11y'] = [dict_row]
-        else:
-          scan_data[domain]['a11y'].append(dict_row)
+  #       dict_row = {}
+  #       for i, cell in enumerate(row):
+  #         dict_row[headers[i]] = cell
+  #       if not scan_data[domain].get('a11y'):
+  #         scan_data[domain]['a11y'] = [dict_row]
+  #       else:
+  #         scan_data[domain]['a11y'].append(dict_row)
 
   # Customer satisfaction, as well. Same as a11y, only load if it exists
-  if os.path.isfile(os.path.join(INPUT_SCAN_DATA, "third_parties.csv")):
-    headers = []
-    with open(os.path.join(INPUT_SCAN_DATA, "third_parties.csv"), newline='') as csvfile:
-      for row in csv.reader(csvfile):
-        if (row[0].lower() == "domain"):
-          headers = row
-          continue
+  # if os.path.isfile(os.path.join(INPUT_SCAN_DATA, "third_parties.csv")):
+  #   headers = []
+  #   with open(os.path.join(INPUT_SCAN_DATA, "third_parties.csv"), newline='') as csvfile:
+  #     for row in csv.reader(csvfile):
+  #       if (row[0].lower() == "domain"):
+  #         headers = row
+  #         continue
 
-        domain = row[0].lower()
-        if not domains.get(domain):
-          continue
+  #       domain = row[0].lower()
+  #       if not domains.get(domain):
+  #         continue
 
-        dict_row = {}
-        for i, cell in enumerate(row):
-          dict_row[headers[i]] = cell
+  #       dict_row = {}
+  #       for i, cell in enumerate(row):
+  #         dict_row[headers[i]] = cell
 
-        scan_data[domain]['cust_sat'] = dict_row
+  #       scan_data[domain]['cust_sat'] = dict_row
 
 
   # Next, load in subdomain pshtt data (if present).
@@ -398,7 +360,6 @@ def load_scan_data(domains):
 def process_domains(domains, agencies, scan_data):
 
   reports = {
-    'analytics': {},
     'https': {},
     'a11y': {},
     'cust_sat': {}
@@ -412,11 +373,6 @@ def process_domains(domains, agencies, scan_data):
   # For each domain, determine eligibility and, if eligible,
   # use the scan data to draw conclusions.
   for domain_name in domains.keys():
-
-    if eligible_for_analytics(domains[domain_name]):
-      reports['analytics'][domain_name] = analytics_report_for(
-        domain_name, domains[domain_name], scan_data
-      )
 
     if eligible_for_https(domains[domain_name]):
       reports['https'][domain_name] = https_report_for(
@@ -443,24 +399,6 @@ def update_agency_totals():
   for agency in all_agencies:
 
     # TODO: Do direct DB queries for answers, rather than iterating.
-
-    # Analytics
-
-    eligible = Domain.eligible_for_agency(agency['slug'], 'analytics')
-
-    agency_report = {
-      'eligible': len(eligible),
-      'participating': 0
-    }
-
-    for domain in eligible:
-      report = domain['analytics']
-      if report['participating'] == True:
-        agency_report['participating'] += 1
-
-    print("[%s][%s] Adding report." % (agency['slug'], 'analytics'))
-    Agency.add_report(agency['slug'], 'analytics', agency_report)
-
 
     # HTTPS
     eligible = Domain.eligible_for_agency(agency['slug'], 'https')
@@ -517,15 +455,6 @@ def update_agency_totals():
 def eligible_for_https(domain):
   return (domain["live"] == True)
 
-def eligible_for_analytics(domain):
-  return (
-    (domain["live"] == True) and
-    (domain["redirect"] == False) and
-    (domain["branch"] == "executive") and
-    # managed in data/ineligible/analytics.yml
-    (domain["exclude"]["analytics"] == False)
-  )
-
 def eligible_for_a11y(domain):
   return (
     (domain["live"] == True) and
@@ -539,15 +468,6 @@ def eligible_for_cust_sat(domain):
     (domain["redirect"] == False) and
     (domain["branch"] == "executive")
   )
-
-# Analytics conclusions for a domain based on analytics domain-scan data.
-def analytics_report_for(domain_name, domain, scan_data):
-  analytics = scan_data[domain_name]['analytics']
-  pshtt = scan_data[domain_name]['pshtt']
-
-  return {
-    'participating': boolean_for(analytics['Participates in Analytics'])
-  }
 
 def a11y_report_for(domain_name, domain, scan_data):
   a11y_report = {
@@ -882,21 +802,6 @@ def latest_reports():
     }
   }
 
-  analytics_domains = Domain.eligible('analytics')
-  total = len(analytics_domains)
-  participating = 0
-  for domain in analytics_domains:
-    report = domain['analytics']
-    if report['participating'] == True:
-      participating += 1
-
-  analytics_report = {
-    'analytics': {
-      'eligible': total,
-      'participating': participating
-    }
-  }
-
   a11y_domains = Domain.eligible('a11y')
   a11y_report = {'a11y': {}}
   for domain in a11y_domains:
@@ -916,7 +821,7 @@ def latest_reports():
     }
   }
 
-  return [https_report, analytics_report, a11y_report, cust_sat_report]
+  return [https_report, a11y_report, cust_sat_report]
 
 # Hacky helper - print out the %'s after the command finishes.
 def print_report():

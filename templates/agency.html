@@ -58,28 +58,6 @@
 				</li>
 			{% endif %}
 
-			{% if agency.analytics %}
-
-				<li class="dap">
-					<ul class="charts">
-
-						<li>
-							<div class="percent">{{ agency.analytics.participating | percent(agency.analytics.eligible) }}%</div>
-							<div class="bar">
-								<div class="fill" style="top: {{ agency.analytics.participating | percent_not(agency.analytics.eligible) }}%"></div>
-							</div>
-						</li>
-
-					</ul>
-
-					<div class="description">
-						<h2>Digital Analytics Program (DAP)</h2>
-						<h3>Domains: {{ agency.analytics.eligible }}</h3>
-						<p>The <strong>Digital Analytics Program</strong> (DAP) is a central, shared web analytics service for federal agencies of the United States government, managed by the General Services Administration. Participating federal agencies report web analytics to a central account, and have access to all reported data. Data from the program is also shared publicly at <a href="https://analytics.usa.gov">analytics.usa.gov</a>.</p>
-					</div>
-				</li>
-			{% endif %}
-
 		</ul>
 
 	</div>

@@ -95,14 +95,6 @@ $(document).ready(function () {
       sources.push(message);
     }
 
-    if (row.https.subdomains.dap) {
-      pct = Utils.percent(row.https.subdomains.dap.enforces, row.https.subdomains.dap.eligible);
-      sources.push(n("" + pct + "%") + " of " +
-        row.https.subdomains.dap.eligible + " public sites " +
-        l(links.dap_data, "known to the Digital Analytics Program") +
-        " enforce HTTPS.")
-    }
-
     if (sources.length == 0)
       return "";
 
@@ -269,8 +261,6 @@ $(document).ready(function () {
   };
 
   var links = {
-    dap: "https://analytics.usa.gov",
-    dap_data: "https://analytics.usa.gov/data/live/sites.csv",
     censys: "https://censys.io",
     hsts: "https://https.cio.gov/hsts/",
     sha1: "https://https.cio.gov/technical-guidelines/#signature-algorithms",

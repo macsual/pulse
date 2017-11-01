@@ -54,21 +54,6 @@
 
 			{% endif %}
 
-			{% if domain.analytics %}
-
-				<li>
-					<h2>Digital Analytics Program (DAP)</h2>
-
-					<ul class="coverage">
-						<li>
-							<span class="label">Participates in DAP:</span>
-							<span class="setting">{{ domain.analytics.participating | field_map('analytics', 'participating') }}</span>
-						</li>
-					</ul>
-				</li>
-
-			{% endif %}
-
 		</ul>
 
 	</div>
